@@ -1,0 +1,36 @@
+## Step-by-Step Guide
+
+1. Create a file 'providers.tf' 
+2. Create a terraform` block & specify the required Terraform version (`~> 1.7`) and the `aws` provider (`~> 5.0`).   
+3. Create a `backend "s3"` block in your Terraform configuration with the following:
+
+    backend "s3" {
+      bucket = "<your-bucket-name>"
+      region = "<your-aws-region>"
+    }
+
+    Note: We've removed the specific backend key and will instead be using a key that includes the environment from a `tfbackend` file.
+
+4. Create a file called `dev.s3.tfbackend`. This file will provide the partial backend configuration for the development environment. In the `dev.tfbackend` file, add the following:
+
+    key = "backends/dev/state.tfstate"
+
+    This sets the S3 key to a path under `backends/dev`.
+
+5. Create a file called `prod.s3.tfbackend`. This file will provide the partial backend configuration for the production environment. In the `prod.tfbackend` file, add the following:
+
+    key = "backends/prod/state.tfstate"
+
+    This sets the S3 key to a path under `backends/prod`.
+
+6 Pass the backend file to Terraform. You can specify which backend configuration file Terraform should use by passing it as a command line argument. For example, to use the development backend, you would run the following command:
+
+    `terraform init -backend-config=dev.tfbackend`
+
+    Similarly, to use the production backend, you would run:
+
+    `terraform init -backend-config=prod.tfbackend`
+
+    This will ensure that Terraform uses the correct state file depending on whether you're working in the development or production environment.
+    
+7. Make sure to destroy the resources after you complete all the steps!

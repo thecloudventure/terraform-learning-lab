@@ -1,6 +1,6 @@
 /*
     1. In the `terraform` block, specify the required Terraform version (`~> 1.7`). 
-        3. In this case, we need the `aws` provider (`~> 5.0`).
+        1. In this case, we need the `aws` provider (`~> 5.0`).
     
 */
 
