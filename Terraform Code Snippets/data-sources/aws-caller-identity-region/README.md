@@ -52,7 +52,7 @@ This exercise introduces additional AWS data sources in Terraform and explains h
         - User ID
         - ARN (Amazon Resource Name) of the authenticated user
 
-** Purpose & Usage
+## Purpose & Usage
 
     - Mainly used to retrieve AWS account dynamically
     - Useful when creating IAM policies or constructing ARNs for roles, users, or resources
@@ -66,7 +66,7 @@ This exercise introduces additional AWS data sources in Terraform and explains h
         - EC2 endpoint
         - Region Description
 
-** Purpose & Usage
+## Purpose & Usage
 
     - Mainly used to retrieve AWS region name dynamically
     - Use region info in:
